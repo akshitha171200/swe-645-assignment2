@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: assignment2-survey-service
+  labels:
+    app: surveyform
+spec:
+  selector:
+    app: surveyform
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443  
+      protocol: TCP
+      name: https

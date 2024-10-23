@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assignment2-survey-deployment
+  labels:
+    app: surveyform
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: surveyform
+  template:
+    metadata:
+      labels:
+        app: surveyform
+    spec:
+      containers:
+        - name: hw2-survey645-container
+          image: spachava3012/hw2-survey645:0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      
