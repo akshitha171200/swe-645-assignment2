@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         dockerImage = ''
+        KUBECONFIG = "${WORKSPACE}/swe645-assignment.yaml" // Updated kubeconfig file path
     }
     stages {
         stage('Clone Repository') {
@@ -12,7 +13,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image from Dockerfile
                     dockerImage = docker.build("spachava3012/hw2-survey645:${env.BUILD_ID}")
                 }
             }
@@ -30,17 +30,24 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'which kubectl'
+                    // Read token from Jenkins credentials
+                    withCredentials([string(credentialsId: 'ed50af5f-aa48-4f53-b4d7-615d00b21278', variable: 'TOKEN')]) {
+                        // Update token in kubeconfig file
+                        sh """
+                            sed -i 's|token:.*|token: ${TOKEN}|g' swe645-assignment.yaml
+                        """
+                    }
                     
-                    sh 'kubectl apply -f k8s/survey-deployment.yaml'
-                    sh 'kubectl apply -f k8s/survey-service.yaml'
-                 
-                    sh 'kubectl rollout status deployment/your-deployment-name'
+                    // Use the modified kubeconfig file
+                    withEnv(["KUBECONFIG=${WORKSPACE}/swe645-assignment.yaml"]) {
+                        sh 'kubectl apply -f survey-deployment.yaml'
+                        sh 'kubectl apply -f survey-service.yaml'
+                        sh 'kubectl rollout status deployment/swe645-deployment'
+                    }
                 }
             }
         }
     }
-    
     post {
         success {
             echo 'Pipeline executed successfully!'
