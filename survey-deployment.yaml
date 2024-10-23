@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hw2-survey645-container
-          image: spachava3012/hw2-survey645:0.1
+          image: spachava3012/hw2-survey645:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
