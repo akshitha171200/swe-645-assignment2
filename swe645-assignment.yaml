@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Config
+clusters:
+- name: "swe645-assignment"
+  cluster:
+    server: "https://ec2-184-72-231-216.compute-1.amazonaws.com/k8s/clusters/c-m-jdc7zqfx"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2VENDQ\
+      VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
+      kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
+      GN5T1RZMApNalUyTVRBZUZ3MHlOREV3TWpNd01ERTJNREZhRncwek5ERXdNakV3TURFMk1ERmFNR\
+      Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
+      1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE56STVOalF5TlRZeE1Ga3dFd1lIS29aSXpqMENBU\
+      VlJS29aSXpqMERBUWNEUWdBRWJobWxvYkVwcThRTQoxN2h3NS80RGtBUGI0K3h5RXJjT1hhV1p2R\
+      EdaQ2dhNzh4V3dTL2RoYTF0dERSekJkbXUvaW1vc1I0a0UyZXlQCnNZeE9pL2FtbGFOQ01FQXdEZ\
+      1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGR\
+      jVFYWkwS2NqMXYyNU1xTC93SjBnRTlBQm1nTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFDcAphO\
+      VloWG1ya0dQOHQ4UC9nK05UdVpnN2p4ei85SHAzdG10UjZ1R3UyZHdJZ0oyTXUycFZEZzhpNHFYe\
+      mxkdnJHCkZDaVFqQTFjYzlKK0h6a2N1a3ptbXFjPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+
+users:
+- name: "swe645-assignment"
+  user:
+    token: "kubeconfig-user-xzwgffl9jk:p4wxjxh2k8hsfjjkg48n5km2vbjdtr7lc5jvxdsxfzrf2nwlpq2js5"
+
+
+contexts:
+- name: "swe645-assignment"
+  context:
+    user: "swe645-assignment"
+    cluster: "swe645-assignment"
+
+current-context: "swe645-assignment"
