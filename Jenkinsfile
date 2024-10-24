@@ -42,7 +42,8 @@ pipeline {
                     withEnv(["KUBECONFIG=${WORKSPACE}/swe645-assignment.yaml"]) {
                         sh 'kubectl apply -f survey-deployment.yaml'
                         sh 'kubectl apply -f survey-service.yaml'
-                        sh 'kubectl rollout status deployment/swe645-deployment'
+                        sh 'kubectl rollout restart deployment/assignment2-survey-deployment'
+                        sh 'kubectl rollout status deployment/assignment2-survey-deployment'
                     }
                 }
             }
